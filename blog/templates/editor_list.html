@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Editors
+{%endblock%}
+
+{%block content%}
+<h1 class="text-3xl font-bold mb-6"><u>Editors</u></h1>
+
+<ul>
+
+    {% for editor in editors %}
+    <div class="border p-4 rounded-lg shadow-md">
+        <li class="text-sm text-gray-600">{{ editor.first_name }} {{ editor.last_name }} - {{ editor.email }}</li>
+    </div>
+    {% endfor %}
+
+</ul>
+{%endblock%}
+
+</html>

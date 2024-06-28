@@ -19,16 +19,23 @@ class Author(models.Model):
         """String for representing the Model object."""
         return f'{self.first_name} {self.last_name} '
     
-    
+class Editor(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+  
     
 class Blog(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    editor = models.ForeignKey(Editor, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(max_length=200)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
-
 
     class Meta:
         ordering = ['-date_posted']
@@ -36,9 +43,10 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
- 
     @classmethod
     def published(cls):
         return cls.objects.filter(is_published=True)
 
+
+from django.db import models
 

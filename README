@@ -1,0 +1,14 @@
+# Django Blog Project
+
+This is a Django project for a blog application with an additional Editor model. The project connects to a PostgreSQL database and includes instructions on how to set up and run the application.
+
+To run the application:
+1. Given that the code is on your device, go to the project directory and in the terminal, run 'python manage.py runserver'.
+
+2. Open the URL and go to the admin interface by adding '/admin' at the end of the URL.
+
+3. Log in using the superuser credentials that you created in the code editor.
+
+4. Access and modify the respective panels for blogs, authors and editors
+
+5. After doing so, navigate to the 'blogs' page to see the blogs with their respective authors and navigate to the 'editors' page to see the editors

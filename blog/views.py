@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Blog
+from .models import Blog,Editor
 
 def home(request):
     context = {'message':'Hello there😉'}
@@ -12,3 +12,7 @@ def blog_list(request):
     blogs = Blog.objects.all()
     context = {'blogs': blogs}
     return render(request, 'blog_list.html', context)
+
+def editor_list(request):
+    editors = Editor.objects.all()
+    return render(request, 'editor_list.html', {'editors': editors})
