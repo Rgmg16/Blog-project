@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Blog,Editor
+from .forms import BlogForm
+from django.shortcuts import redirect
 
 def home(request):
     context = {'message':'Hello there😉'}
@@ -16,3 +18,13 @@ def blog_list(request):
 def editor_list(request):
     editors = Editor.objects.all()
     return render(request, 'editor_list.html', {'editors': editors})
+
+def add_blog(request):
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            blog = form.save()  
+            return redirect('blog_list')  
+    else:
+        form = BlogForm()
+    return render(request, 'add_blog.html', {'form': form})
